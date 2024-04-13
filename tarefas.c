@@ -32,15 +32,13 @@ ERROS criar(Tarefa tarefas[], int *pos){
 }
 
 ERROS deletar(Tarefa tarefas[], int *pos){
-    // teste se existem tarefas
     if(*pos == 0)
         return SEM_TAREFAS;
 
-    // verifica se a tarefa escolhida existe
     int pos_deletar;
     printf("Entre com a posicao da tarefa a ser deletada: ");
     scanf("%d", &pos_deletar);
-    pos_deletar--; // garantir posicao certa no array
+    pos_deletar--;
     if(pos_deletar >= *pos || pos_deletar < 0)
         return NAO_ENCONTRADO;
 
@@ -59,6 +57,11 @@ ERROS listar(Tarefa tarefas[], int *pos){
     if(*pos == 0)
         return SEM_TAREFAS;
 
+  char categ_escolhida[100];
+  printf("Entre com a categoria que deseja listar: ");
+  clearBuffer();
+  fgets(categ_escolhida, 100, stdin);
+
     int encontradas = 0;
     for(int i=0; i<*pos; i++){
         printf("Pos: %d\t", i+1);
@@ -67,10 +70,16 @@ ERROS listar(Tarefa tarefas[], int *pos){
         printf("Descricao: %s\n", tarefas[i].descricao);
         encontradas++;
     }
-   
+      
     if(encontradas == 0)
+      printf("Nenhuma tarefa encontrada para a categoria '%s'.\n", categ_escolhida);
       return SEM_TAREFAS;
     return OK;
+
+  vazio = 0
+
+  if listar == 0
+    printf("%d", listar)
 }
 
 ERROS salvar(Tarefa tarefas[], int *pos){
